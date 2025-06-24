@@ -1,0 +1,26 @@
+[
+  {
+    "id": "1750768003720",
+    "title": "Make Webapp",
+    "dueDate": "2025-06-25T00:00",
+    "priority": "High",
+    "completed": false,
+    "createdAt": "2025-06-24T12:26:43.720Z"
+  },
+  {
+    "id": "1750768077979",
+    "title": "Bonafide Certificate",
+    "dueDate": "2025-06-26T17:57",
+    "priority": "Low",
+    "completed": true,
+    "createdAt": "2025-06-24T12:27:57.979Z"
+  },
+  {
+    "id": "1750768249180",
+    "title": "Contact PSD",
+    "dueDate": "2025-06-25T18:00",
+    "priority": "Medium",
+    "completed": true,
+    "createdAt": "2025-06-24T12:30:49.180Z"
+  }
+]
