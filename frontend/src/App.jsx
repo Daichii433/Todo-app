@@ -3,6 +3,7 @@ import './App.css';
 
 const PRIORITIES = ['High', 'Medium', 'Low'];
 const PRIORITY_ORDER = { High: 0, Medium: 1, Low: 2 };
+const API_URL = import.meta.env.VITE_API_URL;
 
 function categorizeTodos(todos) {
   return {
@@ -19,7 +20,7 @@ function TodoApp() {
   const [editingId, setEditingId] = useState(null);
 
   useEffect(() => {
-    fetch('/api/todos').then(r => r.json()).then(setTodos);
+    fetch(`${API_URL}/api/todos`).then(r => r.json()).then(setTodos);
   }, []);
 
   const handleChange = e => {
@@ -30,7 +31,7 @@ function TodoApp() {
     e.preventDefault();
     if (!form.title) return;
     if (editingId) {
-      fetch(`/api/todos/${editingId}`, {
+      fetch(`${API_URL}/api/todos/${editingId}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(form),
@@ -42,7 +43,7 @@ function TodoApp() {
           setForm({ title: '', dueDate: '', priority: 'Medium' });
         });
     } else {
-      fetch('/api/todos', {
+      fetch(`${API_URL}/api/todos`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(form),
@@ -61,12 +62,12 @@ function TodoApp() {
   };
 
   const handleDelete = id => {
-    fetch(`/api/todos/${id}`, { method: 'DELETE' })
+    fetch(`${API_URL}/api/todos/${id}`, { method: 'DELETE' })
       .then(() => setTodos(todos => todos.filter(t => t.id !== id)));
   };
 
   const handleToggle = todo => {
-    fetch(`/api/todos/${todo.id}`, {
+    fetch(`${API_URL}/api/todos/${todo.id}`, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ completed: !todo.completed }),
